@@ -13,9 +13,11 @@ export default function Navbar() {
           className="flex flex-col items-center gap-2 transition-all duration-400   hover:bg-red-600 hover:rounded text-white px-3 py-2 hover:shadow-red-200 hover:shadow-md"
         >
           <img src="/logo.svg" alt="logo" className="size-7" />
-          <span className="text-xl lg:text-2xl font-medium font-serif text-slate-800">
-            Salhab
-          </span>
+          <Link to="/me">
+            <span className="text-xl lg:text-2xl font-medium font-serif text-slate-800">
+              Salhab
+            </span>
+          </Link>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm text-slate-500 hover:animate-[pulse_5s_linear_1] ">
           <a
