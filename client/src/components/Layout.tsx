@@ -18,7 +18,7 @@ const Layout = () => {
       {/* mobile menu */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-white-900 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
