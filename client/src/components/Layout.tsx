@@ -14,7 +14,7 @@ const Layout = () => {
   const pageTitle = pageTitles[location.pathname] || "Dashboard";
   console.log(location.pathname);
   return (
-    <div className="flex h-screen bg-gray-500">
+    <div className="flex h-screen ">
       {/* mobile menu */}
       {isMobileMenuOpen && (
         <div

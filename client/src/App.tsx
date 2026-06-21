@@ -6,6 +6,9 @@ import Layout from "./components/Layout";
 import Accounts from "./pages/Accounts";
 import AiComposer from "./pages/AiComposer";
 import Scheduler from "./pages/Scheduler";
+/**
+ * Configures the application's client-side routes and layout.
+ */
 export default function App() {
   return (
     <>
