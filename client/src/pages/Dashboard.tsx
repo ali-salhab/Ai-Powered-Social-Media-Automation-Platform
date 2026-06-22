@@ -75,7 +75,7 @@ function Dashboard() {
           Good Morning
         </h2>
         <p className="text-lg text-slate-600">
-          Here is what is happens with ypur social medial accounts today{" "}
+          Here is what's happens with your social media accounts today
         </p>
       </div>
 
@@ -104,7 +104,7 @@ function Dashboard() {
 
       {/* activity feed */}
 
-      <div className="bg-white rounded-2xl border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
           <h3 className="text-lg font-semibold text-slate-800">
             Recent Activity
@@ -131,7 +131,7 @@ function Dashboard() {
             {activites.map((activity) => {
               return (
                 <div
-                  key={activity.id}
+                  key={activity._id}
                   className="flex items-start gap-4 px-6 py-4 hover:bg-slate-50 duration-800 transition-all"
                 >
                   <div className="size-10 rounded-xl flex items-center justify-center shrink-0 p-2 mt-0.5 bg-zinc-100 ">
