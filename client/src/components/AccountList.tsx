@@ -19,7 +19,8 @@ const AccountList = ({ accounts, onDisconnect }: AccountListProps) => {
     if (!confirm) {
       return;
     }
-    onDisconnect(accountId);
+    // fixed
+    await onDisconnect(accountId);
   };
   if (accounts.length === 0)
     return (
@@ -43,7 +44,7 @@ const AccountList = ({ accounts, onDisconnect }: AccountListProps) => {
         if (!meta) return null;
         return (
           <div
-            key={index}
+            key={account._id}
             className="group bg-white border border-slate-300 rounded-2xl p-5 flex items-center gap-4 hover:border-slate-400 transition-all"
           >
             <div>
@@ -72,8 +73,9 @@ const AccountList = ({ accounts, onDisconnect }: AccountListProps) => {
               onClick={() => {
                 handelDisconnect(account._id);
               }}
-              title="Disconnedt account"
-              className="ml-2 p-1.5 rounded-lg text-slate-300 group-hover:text-red-500 transition-all:"
+              // fixed
+              title="Disconned account"
+              className="ml-2 p-1.5 rounded-lg text-slate-300 group-hover:text-red-500 transition-all"
             >
               <UnplugIcon className="size-6" />
             </button>

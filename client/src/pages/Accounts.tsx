@@ -31,20 +31,32 @@ function Accounts() {
   const handleConnect = async (platformId: string) => {
     console.log(platformId);
     setconnecting(platformId);
+    // here the problem state update in unmounted component
+    //
+    // تخيل أنك ضغطت على زر "Connect"، فبدأ الـ setTimeout بالعد التنازلي لمدة ثانية واحدة.
 
+    // أثناء هذه الثانية، قام المستخدم بإغلاق النافذة (أو انتقل لصفحة أخرى) مما أدى إلى إزالة المكون (Unmount) من الصفحة.
+
+    // بعد انتهاء الثانية، سيحاول setTimeout تنفيذ الكود الذي يقوم بعمل setAccounts أو setShowPlatformPicker.
+
+    // بما أن المكون لم يعد موجوداً، سيقوم React بإصدار تحذير في الـ Console بأنك تحاول تحديث حالة (State) لمكون "ميت"، وهذا قد يسبب أخطاء أو استهلاكاً غير ضروري للذاكرة.
     setTimeout(() => {
       setconnecting(null);
-      setAccounts((prev) => [...prev, dummyActivityData[0]]);
+      setAccounts((prev) => [
+        ...prev,
+        {
+          _id: crypto.randomUUID(),
+          platform: platformId,
+          handle: `@${platformId}`,
+          status: "connected",
+        },
+      ]);
       setShowPlatformPicker(false);
     }, 1000);
   };
   const handleDisconnect = async (accountId: string) => {
     console.log(accountId);
-    setAccounts(
-      accounts.filter((a) => {
-        return a._id !== accountId;
-      }),
-    );
+    setAccounts((prev) => prev.filter((a) => a._id !== accountId));
   };
   const connectedIds = accounts.map((a) => {
     return a.platform;

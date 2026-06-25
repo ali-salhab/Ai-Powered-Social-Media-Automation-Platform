@@ -16,11 +16,22 @@ const PlatformPickerModel = ({
 }: PlatformPickerModelProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-2xl">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md border border-slate-100">
+      <div
+        role="dialog"
+        // ماذا تفعل؟ تخبر المتصفح: "هذا ليس مجرد div عادي، هذا العنصر هو نافذة منبثقة (Modal/Dialog)".
+        aria-modal="true"
+        // بدون هذه الخاصية: إذا ضغط المستخدم على زر (Tab) في لوحة المفاتيح، سيظل يتنقل بين العناصر الموجودة خلف النافذة المنبثقة.
+        // الفائدة: عندما تكون قيمتها true، فإنها تمنع المتصفح من السماح للمستخدم بالتفاعل مع أي شيء خارج النافذة (مثل الأزرار أو الروابط الموجودة في خلفية الصفحة) حتى يقوم المستخدم بإغلاق هذه النافذة. هي تعزز دور الـ dialog
+        aria-labelledby="platform-picker-title"
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-md border border-slate-100"
+      >
         {/* header */}
         <div className="flex items-center justify-between px-6 py-4 shadow">
-          <h3 className="text-slate-800">Choose a platform </h3>
+          <h3 id="platform-picker-title" className="text-slate-800">
+            Choose a platform{" "}
+          </h3>
           <button
+            aria-label="Close platform picker"
             onClick={onClose}
             className="p-2 rounded-full hover:bg-slate-100 text-slate-500 transition-colors"
           >
@@ -60,7 +71,7 @@ const PlatformPickerModel = ({
                   >
                     {p.name}
                   </div>
-                  <div>{isConnected ? "Already Connectd" : p.description}</div>
+                  <div>{isConnected ? "Already Connected" : p.description}</div>
                 </div>
                 {/* status */}
                 {isConnected && (
